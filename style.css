@@ -13,7 +13,7 @@ h1 {
 }
 
 #grid {
-	margin: auto;
+	margin: 1em auto 0;
 	border-spacing: 0;
 	border-collapse: collapse;
 }
@@ -21,6 +21,30 @@ h1 {
 	#grid td {
 		border: 1px solid gray;
 
+	}
+
+	@-webkit-keyframes birth {
+		50% {
+			box-shadow: 0 0 0 99px green inset;
+		}
+	}
+
+	@keyframes birth {
+		50% {
+			box-shadow: 0 0 0 99px green inset;
+		}
+	}
+
+	@-webkit-keyframes dying {
+		50% {
+			box-shadow: 0 0 0 99px red inset;
+		}
+	}
+
+	@keyframes dying {
+		50% {
+			box-shadow: 0 0 0 99px red inset;
+		}
 	}
 
 	#grid input[type="checkbox"] {
@@ -35,6 +59,45 @@ h1 {
 	}
 
 		#grid input[type="checkbox"]:checked {
-			background: black;
 			box-shadow: 0 0 0 99px black inset;
+			-webkit-animation: birth 500ms;
+			animation: birth 500ms;
 		}
+/*
+		#grid input[type="checkbox"] {
+			box-shadow: 0 0 0 99px white inset;
+			-webkit-animation: dying 500ms;
+			animation: dying 1000ms;
+		}
+*/
+button,
+.button {
+	padding: .4em .6em;
+	border: 1px solid rgba(0,0,0,.2);
+	border-radius: .3em;
+	box-shadow: 0 1px - hsla(0,0%, 100%,.7) inset, 0 .15em .1em -.1em rgba(0,0,0,.3);
+	background: linear-gradient(hsla(0,0%, 100%, .3), hsla(0,0%, 100%, 0)) hsl(80, 80%, 35%);
+	font: inherit;
+	font-weight:  bold;
+	color: white;
+	text-shadow: 0 -.05em .95em rgba(0,0,.3);
+	outline: none;
+	cursor: pointer;
+}
+
+button:enabled:active,
+.button:active,
+input[type="checkbox"]:checked + label.button{
+	background-image:  none;
+	box-shadow: 0 .05em .2em rgba(0,0,0,.5) inset;
+}
+
+button:disabled {
+	background-color: hsl(80, 20%, 40%)
+	cursor: not-allowed;
+}
+
+#autoplay {
+	position: absolute;
+	clip: rect(0,0,0,0);
+}
